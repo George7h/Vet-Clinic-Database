@@ -8,8 +8,6 @@ VALUES
   ('Devimon', '2017-05-12', 11, true, 5);
 
 
-ALTER TABLE animals ADD COLUMN species VARCHAR(100);
-
 INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts)
 VALUES 
   ('Charmander', '2020-02-08', -11, false, 0),
