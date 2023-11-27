@@ -133,7 +133,7 @@ FROM visits v
 JOIN vets vet ON v.vet_id = vet.id
 JOIN animals a ON v.animal_id = a.id
 WHERE vet.name = 'William Tatcher'
-ORDER BY v.visit_date DESC
+ORDER BY v.date_of_visit DESC
 LIMIT 1;
 
 #How many different animals did Stephanie Mendez see?
@@ -153,7 +153,7 @@ SELECT a.*
 FROM visits v
 JOIN vets vet ON v.vet_id = vet.id
 JOIN animals a ON v.animal_id = a.id
-WHERE vet.name = 'Stephanie Mendez' AND v.visit_date BETWEEN '2020-04-01' AND '2020-08-30';
+WHERE vet.name = 'Stephanie Mendez' AND v.date_of_visit BETWEEN '2020-04-01' AND '2020-08-30';
 
 #What animal has the most visits to vets?
 SELECT a.id, a.name, COUNT(*) AS visit_count
@@ -169,15 +169,15 @@ FROM visits v
 JOIN vets vet ON v.vet_id = vet.id
 JOIN animals a ON v.animal_id = a.id
 WHERE vet.name = 'Maisy Smith'
-ORDER BY v.visit_date
+ORDER BY v.date_of_visit
 LIMIT 1;
 
 #Details for the most recent visit: animal information, vet information, and date of visit.
-SELECT a.*, vet.name AS vet_name, v.visit_date
+SELECT a.*, vet.name AS vet_name, v.date_of_visit
 FROM visits v
 JOIN vets vet ON v.vet_id = vet.id
 JOIN animals a ON v.animal_id = a.id
-ORDER BY v.visit_date DESC
+ORDER BY v.date_of_visit DESC
 LIMIT 1;
 
 #How many visits were with a vet that did not specialize in that animal's species?
@@ -198,3 +198,9 @@ WHERE vet.name = 'Maisy Smith'
 GROUP BY sp.name
 ORDER BY visits_count DESC
 LIMIT 1;
+
+
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4;
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2;
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com'
