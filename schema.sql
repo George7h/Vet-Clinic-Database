@@ -1,61 +1,51 @@
-/* Database schema to keep the structure of entire database. */
 
-CREATE TABLE animals (
-    id INT GENERATED ALWAYS AS IDENTITY,
-    name varchar(100),
-    date_of_birth DATE,
-    escape_attempts INT,
-    neutered BOOLEAN,
-    weight_kg DECIMAL,
-    PRIMARY KEY (id)
+CREATE TABLE owners(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  full_name VARCHAR(20),
+  age INT,
+  PRIMARY KEY(id)
 );
 
-ALTER TABLE animals ADD COLUMN species VARCHAR(100);
-
-CREATE TABLE owners (
-    id SERIAL PRIMARY KEY,
-    full_name VARCHAR(255),
-    age INT
+CREATE TABLE species(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(20),
+  PRIMARY KEY(id)
 );
 
-CREATE TABLE species (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+CREATE TABLE animals(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(20),
+  date_of_birth DATE,
+  escape_attempts INT,
+  neutered BOOLEAN,
+  weight_kg DECIMAL,
+  species_id INT REFERENCES species(id),
+  owner_id INT REFERENCES owners(id),
+  PRIMARY KEY(id)
 );
 
--- Drop the existing primary key constraint on id
-ALTER TABLE animals DROP CONSTRAINT animals_pkey;
-
--- Set id as auto-incremented primary key
-ALTER TABLE animals ADD COLUMN id SERIAL PRIMARY KEY;
-ALTER TABLE animals ADD PRIMARY KEY (id);
-
--- Remove the existing "species" column
-ALTER TABLE animals DROP COLUMN species;
-
--- Add a new column species_id as a foreign key referencing the species table
-ALTER TABLE animals ADD COLUMN species_id INTEGER REFERENCES species(id);
-
--- Add a new column owner_id as a foreign key referencing the owners table
-ALTER TABLE animals ADD COLUMN owner_id INTEGER REFERENCES owners(id);
-
-
-CREATE TABLE vets (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    age INTEGER,
-    date_of_graduation DATE
+CREATE TABLE vets(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(20),
+  age INT,
+  date_of_graduation DATE,
+  PRIMARY KEY(id)
 );
 
-CREATE TABLE specializations (
-    vet_id INTEGER REFERENCES vets(id),
-    species_id INTEGER REFERENCES species(id),
-    PRIMARY KEY (vet_id, species_id)
+CREATE TABLE specializations(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  species_id INT REFERENCES species(id),
+  vet_id INT REFERENCES vets(id),
+  PRIMARY KEY(id)
 );
 
-CREATE TABLE visits (
-    vet_id INTEGER REFERENCES vets(id),
-    animal_id INTEGER REFERENCES animals(id),
-    visit_date DATE,
-    PRIMARY KEY (vet_id, animal_id, visit_date)
+CREATE TABLE visits(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  animal_id INT REFERENCES animals(id),
+  vet_id INT REFERENCES vets(id),
+  date_of_visit DATE,
+  PRIMARY KEY(id)
 );
+
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
