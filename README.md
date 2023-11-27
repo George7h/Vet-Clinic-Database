@@ -117,6 +117,11 @@ Comming soon.
 
 - GitHub: [@githubhandle](https://github.com/axcell-0)
 
+👤 **Austin Obimbo**
+
+- GitHub: [@githubhandle](https://github.com/Obimbo07)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/austin-obimbo-9a613623a/)
+- WellFound: [Wellfound](https://wellfound.com/austin-obimbo).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
