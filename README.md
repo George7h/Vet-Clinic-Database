@@ -113,6 +113,15 @@ Comming soon.
 - GitHub: [@githubhandle](https://github.com/George7h)
 - LinkedIn: <a href="https://www.linkedin.com/in/george-hamman-95b98224b/">George Hamman</a>
 
+👤 **Axcell Evans**
+
+- GitHub: [@githubhandle](https://github.com/axcell-0)
+
+👤 **Austin Obimbo**
+
+- GitHub: [@githubhandle](https://github.com/Obimbo07)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/austin-obimbo-9a613623a/)
+- WellFound: [Wellfound](https://wellfound.com/austin-obimbo).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
